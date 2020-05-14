@@ -2,7 +2,88 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import WebDriverException
+import time
+
+
+reviewFound = False
+
+
+def wait(x):
+    # Waiting will be needed at a few points in the script
+    time.sleep(x)
+
+
+def get_title_text():
+    # Take some time for the elements to be loaded
+    wait(1.5)
+    title = driver.find_elements_by_tag_name("h1")
+    return title
+
+
+def fill_with_stars():
+    x = 4
+    buttonLine = driver.find_elements_by_class_name("button-star")
+    buttonLine[x].click()
+    buttonLine[x+5].click()
+    buttonLine[x+10].click()
+    buttonLine[x+15].click()
+    buttonLine[x+20].click()
+    buttonLine[x+25].click()
+    wait(1)
+
+
+def whats_this_card_about():
+    # Choose the first option if required
+    pass
+
+
+def skip_or_wait(element):
+    # If skippable - skip / If not - wait
+    if element.is_enabled():
+        element.click()
+        wait(2)
+    else:
+        print("Element is not clickable. Waiting for timeout...")
+        # At this time the timeout takes 20 minutes to happen
+        wait(1200)
+        # Go to the next Review by reloading
+        driver.get("https://wayfarer.nianticlabs.com/review")
+        wait(1)
+
+
+def rate_or_skip(titleTexts, yourDesiredTitle):
+    for text in titleTexts:
+        print("Title of the current review: " + text.text)
+        # If the text is the one we searched for
+        if text.text == yourDesiredTitle:
+            print("Giving it 5 Stars...")
+
+            # Click 5 stars everytime
+            fill_with_stars()
+
+            # !!! Check if submitable - if not: Do whats_this_card_about
+
+            # Click: submit
+            submit = driver.find_elements_by_class_name("submit-btn-container")
+            wait(1)
+            # It is always the second element - could be done nicer
+            submit[1].click()
+            wait(1)
+
+            # Bool for ending the loop
+            reviewFound = True
+
+            # Go to the next Review by reloading
+            driver.get("https://wayfarer.nianticlabs.com/review")
+            wait(1)
+        else:
+            print("Skipping to next review or waiting for timeout...")
+            # Click: skip review
+            skip = driver.find_elements_by_class_name("button-secondary")
+            # It is always the 4th element - could be done nicer
+            skip_or_wait(skip[3])
+
 
 # Set up options used by the chrome instance
 options = webdriver.ChromeOptions()
@@ -13,20 +94,11 @@ options.add_argument("--ignore-ssl-errors")
 # Path to a chrome profile where you are already logged in to your google account is needed
 options.add_argument(
     "--user-data-dir=C:/Users/Joachim/AppData/Local/Google/Chrome/User Data")
-options.add_argument("--profile-directory=Profile 2")
+options.add_argument("--profile-directory=Profile 3")
 
 # Pass the path to the chromedriver as well as the defined options
 driver = webdriver.Chrome(
     executable_path='./chromedriver', options=options)
-
-# Used for debugging purposes to get the session id of the chrome instance
-#executor_url = driver.command_executor._url
-#session_id = driver.session_id
-# print(session_id)
-# print(executor_url)
-
-# Waiting - TBF!
-driver.implicitly_wait(30)
 
 # Start the chrome instance with the given website
 driver.get("https://wayfarer.nianticlabs.com/")
@@ -38,18 +110,10 @@ loginElement[0].click()
 # Switch to the review page
 driver.get("https://wayfarer.nianticlabs.com/review")
 
-# Get text of the title section
-getTitle = driver.find_elements_by_class_name("title-description")
-# getTitle[0].text
-print(getTitle)
+while not reviewFound:
+    # Get text of the title section
+    titleTexts = get_title_text()
 
-# Compare the text to a predefined one
+    # Check if it is the review we searched for and rate it or skip if not
+    rate_or_skip(titleTexts, "Uhr der Victoria Station")
 
-""""loginElement = browser.find_elements_by_tag_name("button")
-loginElement[0].click()
-
-emailElement = browser.find_elements_by_tag_name("input")
-emailElement[0].send_keys("joachim.kull94@googlemail.com")
-
-confirmEmail = browser.find_elements_by_tag_name("button")
-confirmEmail[0].click() """
