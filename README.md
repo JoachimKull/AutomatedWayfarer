@@ -15,16 +15,15 @@ pip install selenium
 - In your opened command prompt type:
 
 ```
-python ./AutoWayfarer.py <path-to-your-chrome-user-directory> <path-to-your-used-profile> <title-of-the-searched-review>
+python ./AutoWayfarer.py
 ```
 - To stop the script from running press ```Control + C```
 
 ### TODO
-- [ ] Setup arg parsing
 
-- [ ] Terminate gracefully?
+- [X] Terminate gracefully?
 
-- [ ] Refactor in methods for reusability
+- [x] Refactor in methods for reusability
 
 - [x] Run it in loop
 
@@ -34,6 +33,7 @@ python ./AutoWayfarer.py <path-to-your-chrome-user-directory> <path-to-your-used
 
 - [x] Give 5 stars if it is your searched review -> func
 
-- [ ] Special cases: 
+- [ ] Special cases:
+  - Check for City/s and give 5 Stars 
   - Determine closest position
   - "What is this card about (Required)" (h4 class: card-header__title) -> needs to be chosen

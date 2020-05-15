@@ -3,9 +3,11 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import WebDriverException
+from datetime import datetime
 import time
 
 
+# Bool for ending the loop
 reviewFound = False
 
 
@@ -45,11 +47,12 @@ def skip_or_wait(element):
         wait(2)
     else:
         print("Element is not clickable. Waiting for timeout...")
-        # At this time the timeout takes 20 minutes to happen
-        wait(1200)
+        # At this time the timeout takes 20 minutes (1200s) to happen
+        wait(600)
+
         # Go to the next Review by reloading
-        driver.get("https://wayfarer.nianticlabs.com/review")
-        wait(1)
+        # driver.get("https://wayfarer.nianticlabs.com/review")
+        # wait(1)
 
 
 def rate_or_skip(titleTexts, yourDesiredTitle):
@@ -71,7 +74,7 @@ def rate_or_skip(titleTexts, yourDesiredTitle):
             submit[1].click()
             wait(1)
 
-            # Bool for ending the loop
+            # Setting Bool
             reviewFound = True
 
             # Go to the next Review by reloading
@@ -85,35 +88,53 @@ def rate_or_skip(titleTexts, yourDesiredTitle):
             skip_or_wait(skip[3])
 
 
-# Set up options used by the chrome instance
-options = webdriver.ChromeOptions()
-# option.add_argument("--incognito")
-options.add_argument("--ignore-certificate-errors")
-options.add_argument("--ignore-ssl-errors")
-# Those options are the clue to pass Google's check if an automation software is used
-# Path to a chrome profile where you are already logged in to your google account is needed
-options.add_argument(
-    "--user-data-dir=C:/Users/Joachim/AppData/Local/Google/Chrome/User Data")
-options.add_argument("--profile-directory=Profile 3")
+def setup():
+    # Set up options used by the chrome instance
+    options = webdriver.ChromeOptions()
+    # option.add_argument("--incognito")
+    options.add_argument("--ignore-certificate-errors")
+    options.add_argument("--ignore-ssl-errors")
+    # Those options are the clue to pass Google's check if an automation software is used
+    # Path to a chrome profile where you are already logged in to your google account is needed
+    options.add_argument(
+        "--user-data-dir=C:/Users/Joachim/AppData/Local/Google/Chrome/User Data")
+    options.add_argument("--profile-directory=Profile 3")
 
-# Pass the path to the chromedriver as well as the defined options
-driver = webdriver.Chrome(
-    executable_path='./chromedriver', options=options)
+    # Pass the path to the chromedriver as well as the defined options
+    driver = webdriver.Chrome(
+        executable_path='./chromedriver', options=options)
 
-# Start the chrome instance with the given website
-driver.get("https://wayfarer.nianticlabs.com/")
+    # Start the chrome instance with the given website
+    driver.get("https://wayfarer.nianticlabs.com/")
 
-# Click the first button you find
-loginElement = driver.find_elements_by_tag_name("button")
-loginElement[0].click()
+    # Click the first button you find
+    loginElement = driver.find_elements_by_tag_name("button")
+    loginElement[0].click()
 
-# Switch to the review page
-driver.get("https://wayfarer.nianticlabs.com/review")
+    # Switch to the review page
+    driver.get("https://wayfarer.nianticlabs.com/review")
+
+    return driver
+
 
 while not reviewFound:
-    # Get text of the title section
-    titleTexts = get_title_text()
+    try:
+        # Start the Browser instance
+        driver = setup()
+        # Show current time
+        print(datetime.today().strftime('%d-%m-%Y / %H:%M:%S'))
 
-    # Check if it is the review we searched for and rate it or skip if not
-    rate_or_skip(titleTexts, "Uhr der Victoria Station")
+        # Get text of the title section
+        titleTexts = get_title_text()
 
+        # Check if it is the review we searched for and rate it or skip if not
+        rate_or_skip(titleTexts, "Uhr der Victoria Station")
+
+        # Closing the browser
+        driver.close()
+    except KeyboardInterrupt:
+        print("Program stopped! - See you soon :)")
+        exit()
+
+
+print(">>> Yes! Your Review has been found! <<<")
