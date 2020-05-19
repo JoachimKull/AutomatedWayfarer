@@ -33,6 +33,14 @@ python ./AutoWayfarer.py
 
 - [x] Give 5 stars if it is your searched review -> func
 
+- [ ] Add random number gen. for generating numbers between 3 and 4
+  
+- [ ] Safe titles of reviews in file to see which type happens the most
+  
+- [ ] Set flexible limit (35) of 'daily' reviews done by the script + random time between the reviews
+  
+- [ ] Change behaviour to always vote the submission and if the ones we searched for are found do the 5 stars -> new branch
+
 - [ ] Special cases:
   - Check for City/s and give 5 Stars 
   - Determine closest position

@@ -25,3 +25,15 @@
 [0515/103543.042:ERROR:exception_snapshot_win.cc(98)] thread ID 12512 not found in process
 [0515/103543.048:ERROR:process_reader_win.cc(123)] NtOpenThread: {Zugriff verweigert} Ein Prozess hat einen Zugriff auf ein Objekt angefordert, aber ihm wurden nicht die Rechte für den Zugriff erteilt. (0xc0000022)
 [0515/103543.048:ERROR:exception_snapshot_win.cc(98)] thread ID 14004 not found in process
+[0515/113052.248:ERROR:process_reader_win.cc(123)] NtOpenThread: {Zugriff verweigert} Ein Prozess hat einen Zugriff auf ein Objekt angefordert, aber ihm wurden nicht die Rechte für den Zugriff erteilt. (0xc0000022)
+[0515/113052.250:ERROR:exception_snapshot_win.cc(98)] thread ID 9016 not found in process
+[0515/113052.255:ERROR:process_reader_win.cc(123)] NtOpenThread: {Zugriff verweigert} Ein Prozess hat einen Zugriff auf ein Objekt angefordert, aber ihm wurden nicht die Rechte für den Zugriff erteilt. (0xc0000022)
+[0515/113052.255:ERROR:exception_snapshot_win.cc(98)] thread ID 12628 not found in process
+[0515/120624.501:ERROR:process_reader_win.cc(123)] NtOpenThread: {Zugriff verweigert} Ein Prozess hat einen Zugriff auf ein Objekt angefordert, aber ihm wurden nicht die Rechte für den Zugriff erteilt. (0xc0000022)
+[0515/120624.503:ERROR:exception_snapshot_win.cc(98)] thread ID 1916 not found in process
+[0515/120624.509:ERROR:process_reader_win.cc(123)] NtOpenThread: {Zugriff verweigert} Ein Prozess hat einen Zugriff auf ein Objekt angefordert, aber ihm wurden nicht die Rechte für den Zugriff erteilt. (0xc0000022)
+[0515/120624.509:ERROR:exception_snapshot_win.cc(98)] thread ID 9240 not found in process
+[0515/121148.073:ERROR:process_reader_win.cc(123)] NtOpenThread: {Zugriff verweigert} Ein Prozess hat einen Zugriff auf ein Objekt angefordert, aber ihm wurden nicht die Rechte für den Zugriff erteilt. (0xc0000022)
+[0515/121148.075:ERROR:exception_snapshot_win.cc(98)] thread ID 11556 not found in process
+[0515/121148.081:ERROR:process_reader_win.cc(123)] NtOpenThread: {Zugriff verweigert} Ein Prozess hat einen Zugriff auf ein Objekt angefordert, aber ihm wurden nicht die Rechte für den Zugriff erteilt. (0xc0000022)
+[0515/121148.081:ERROR:exception_snapshot_win.cc(98)] thread ID 8528 not found in process

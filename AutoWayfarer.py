@@ -82,6 +82,7 @@ def rate_or_skip(titleTexts, yourDesiredTitle):
             wait(1)
         else:
             print("Skipping to next review or waiting for timeout...")
+            wait(1)
             # Click: skip review
             skip = driver.find_elements_by_class_name("button-secondary")
             # It is always the 4th element - could be done nicer
@@ -121,6 +122,7 @@ while not reviewFound:
     try:
         # Start the Browser instance
         driver = setup()
+
         # Show current time
         print(datetime.today().strftime('%d-%m-%Y / %H:%M:%S'))
 
