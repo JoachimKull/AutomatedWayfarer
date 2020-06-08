@@ -36,3 +36,9 @@ python ./AutoWayfarer.py
   - [ ] Determine closest position
   - [ ] Determine best titel
   - [x] "What is this card about (Required)" (h4 class: card-header__title) -> needs to be chosen
+  
+  
+#### Images used
+- https://community.bisafans.de/index.php?media/157203-wayfarer-png/&thumbnail=large
+- https://icons8.de/icons/set/selenium-test-automation
+- https://pokemongohub.net/wp-content/uploads/2020/02/ERBsBI1XUAAyGPq.jpeg
