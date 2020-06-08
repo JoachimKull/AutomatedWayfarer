@@ -1,17 +1,24 @@
 # AutomatedWayfarer
-This is a Python Script based on Selenium for automated searching through the Pokemon Go's Wayfarer Portal. The goal is to find a certain review based on the title to give it a certain rating.
+This is a Python Script based on Selenium for **automated searching through the Pokemon Go's Wayfarer Portal**. The goal is to find a certain review (or multiple) based on the title to give it a certain rating.
+
+The script is by far not a perfect masterpiece, because it doesn't handle all special cases and it doesn't use xpath -> Therefore feel free to place a merge request.
 
 ## Prerequisites
-- Download Python 3 and add it to PATH
-- Download: The [chromedriver](https://chromedriver.chromium.org/downloads)
-- The [chrome browser](https://www.google.com/chrome/) itself
-- In the browser - log in and activate sync - restart and see if it is sync is paused. If so type ```chrome://settings/content/cookies``` into the search bar and whitelist ```accounts.google.com```. Syncing should now work.
-- Open up a command prompt in this folder and 
+Download: 
+- [Python 3](https://www.python.org/downloads/) and add it to PATH
+- the [chromedriver](https://chromedriver.chromium.org/downloads)
+- and the [chrome browser version 83](https://www.google.com/chrome/) itself
+
+In the browser - log in and activate sync - restart and see if sync is paused. 
+
+If sync is still paused type ```chrome://settings/content/cookies``` into the search bar and whitelist ```accounts.google.com``` - Syncing should work now.
+- Open up a command prompt in the folder of this script and  
 ```
 pip install selenium
 ```
 
 ## Usage
+- Open up the ```AutoWayfarer.py``` file in a text editor and change the name of the submissions (```mySubmissions = ["title1", "title2"]```) you want to search for, then safe and close.
 - In your opened command prompt type:
 
 ```
@@ -21,27 +28,11 @@ python ./AutoWayfarer.py
 
 ### TODO
 
-- [X] Terminate gracefully?
+- [ ] Refactor using xpath?
 
-- [x] Refactor in methods for reusability
-
-- [x] Run it in loop
-
-- [x] Skip to next review -> done by reloading the page
-
-- [x] Wait for timeout -> func
-
-- [x] Give 5 stars if it is your searched review -> func
-
-- [ ] Add random number gen. for generating numbers between 3 and 4
-  
-- [ ] Safe titles of reviews in file to see which type happens the most
-  
-- [ ] Set flexible limit (35) of 'daily' reviews done by the script + random time between the reviews
-  
-- [ ] Change behaviour to always vote the submission and if the ones we searched for are found do the 5 stars -> new branch
+*Special cases are somewhat handled with a timeout to move on and to not break the script*
 
 - [ ] Special cases:
-  - Check for City/s and give 5 Stars 
-  - Determine closest position
-  - "What is this card about (Required)" (h4 class: card-header__title) -> needs to be chosen
+  - [ ] Determine closest position
+  - [ ] Determine best titel
+  - [x] "What is this card about (Required)" (h4 class: card-header__title) -> needs to be chosen
