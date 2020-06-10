@@ -6,7 +6,7 @@ The script is by far not a perfect masterpiece, because it doesn't handle all sp
 ## Prerequisites
 Download: 
 - [Python 3](https://www.python.org/downloads/) and add it to PATH
-- the [chromedriver](https://chromedriver.chromium.org/downloads)
+- (_only if you need a newer version_) the [chromedriver](https://chromedriver.chromium.org/downloads)
 - and the [chrome browser version 83](https://www.google.com/chrome/) itself
 
 In the browser - log in and activate sync - restart and see if sync is paused. 
