@@ -6,7 +6,7 @@ The script is by far not a perfect masterpiece, because it doesn't handle all sp
 ## Prerequisites
 Download: 
 - [Python 3](https://www.python.org/downloads/) and add it to PATH
-- (_only if you need a newer version_) the [chromedriver](https://chromedriver.chromium.org/downloads)
+- the [chromedriver](https://chromedriver.chromium.org/downloads) (_only if you need a newer version_) 
 - and the [chrome browser version 83](https://www.google.com/chrome/) itself
 
 In the browser - log in and activate sync - restart and see if sync is paused. 
@@ -16,6 +16,7 @@ If sync is still paused type ```chrome://settings/content/cookies``` into the se
 ```
 pip install selenium
 ```
+If you get an error saying that it does not know pip, restart your machine and try again.
 
 ## Usage
 - Open up the ```AutoWayfarer.py``` file in a text editor and change the name of the submissions
@@ -24,8 +25,8 @@ pip install selenium
 
 you want to search for as well as the path to your Google Chrome Profile 
 ```
-options.add_argument("--user-data-dir=C:/Users/Joachim/AppData/Local/Google/Chrome/User Data")
-options.add_argument("--profile-directory=Profile 2")
+options.add_argument("--user-data-dir=C:/Users/YOURNAME/AppData/Local/Google/Chrome/User Data")
+options.add_argument("--profile-directory=Default")
 ```
 then safe and close.
 - In your opened command prompt type:
@@ -33,6 +34,8 @@ then safe and close.
 ```
 python ./AutoWayfarer.py
 ```
+- The first time you do this selenium will open with a guest account and fail. Cancel the script and close chrome.
+- Now you have a directory named "Profile 2" under the User Data directory of Chrome. Copy all files of the "Default" directory to the "Profile 2" directory and restart the script. By now you have set it all up and you can relaunch it whenever you want.
 - To stop the script from running press ```Control + C```
 
 ### TODO
