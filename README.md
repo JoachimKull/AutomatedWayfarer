@@ -1,5 +1,5 @@
 # AutomatedWayfarer
-This is a Python Script based on Selenium for **automated searching through the Pokemon Go's Wayfarer Portal**. The goal is to find a certain review (or multiple) based on the title to give it a certain rating.
+This is a Python Script based on Selenium for **automated searching through the Pokemon Go's Wayfarer Portal**. The goal is to find a certain review (or multiple) based on the title to give it a certain rating. This project is only for demonstrating the power of UI testing with Selenium. **Do not use this program extensively as your account maybe banned!**
 
 The script is by far not a perfect masterpiece, because it doesn't handle all special cases and it doesn't use xpath -> Therefore feel free to place a merge request.
 
@@ -18,7 +18,16 @@ pip install selenium
 ```
 
 ## Usage
-- Open up the ```AutoWayfarer.py``` file in a text editor and change the name of the submissions (```mySubmissions = ["title1", "title2"]```) you want to search for, then safe and close.
+- Open up the ```AutoWayfarer.py``` file in a text editor and change the name of the submissions
+
+```mySubmissions = ["title1", "title2"]```
+
+you want to search for as well as the path to your Google Chrome Profile 
+```
+options.add_argument("--user-data-dir=C:/Users/Joachim/AppData/Local/Google/Chrome/User Data")
+options.add_argument("--profile-directory=Profile 2")
+```
+then safe and close.
 - In your opened command prompt type:
 
 ```
